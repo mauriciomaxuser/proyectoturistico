@@ -9,9 +9,16 @@ class LugarturisticoController extends Controller
 {
     public function lugares()
     {
-        $lugares = Categoria::all();
+        $lugares = Lugarturistico::all();
 
-        return view('categorias.index', compact('categorias'));
+        return view('lugares.lugares', compact('lugares'));
     }//
     //
+    public function create()
+    {
+        return view('lugares.nuevolugar');
+
+
+        //
+    }
 }
