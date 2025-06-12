@@ -41,5 +41,15 @@ class CategoriaController extends Controller
         return view('categorias.editarcategoria', compact('categoria'));
     //
     }
+    //funcion actualizar
+    public function update(Request $request, string $id)
+    {
+        
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+
+        return redirect()->route('categorias.index')->with('success', 'Categoría actualizado correctamente.');//
+    }
+
     
 }
