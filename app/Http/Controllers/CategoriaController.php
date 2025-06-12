@@ -33,5 +33,13 @@ class CategoriaController extends Controller
         //
     }
 
+    //editar categorias
+    public function edit(string $id)
+    {
+        
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.editarcategoria', compact('categoria'));
+    //
+    }
     
 }
