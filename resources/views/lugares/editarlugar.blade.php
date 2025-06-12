@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('contenido')
-<form action="{{ route('lugares.update', $lugar->id) }}" method="post" enctype="multipart/form-data">
+<form  id="form_lugar_editar"  action="{{ route('lugares.update', $lugar->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -46,7 +46,9 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a class="btn btn-outline-danger" href="{{ route('lugares.lugares') }}">Cancelar</a>
 </form>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0qMP6QpknxzQtVxvF-JT3DVvZ00O0_7k
+    &libraries=places&callback=initMap">
+    </script>
 
 <script type="text/javascript">
     function initMap(){
@@ -81,5 +83,62 @@
           }
         );
       }
+</script>
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function () {
+        $('#form_lugar_editar').validate({
+            rules: {
+                nombre: {
+                    required: true,
+                },
+                descripcion: {
+                    required: true,
+                },
+                categoria: {
+                    required: true
+                },
+                
+                latitud: {
+                    required: true,
+                    number: true
+                },
+                longitud: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                nombre: {
+                    required: "Por favor ingrese el nombre del lugar",
+                },
+                descripcion: {
+                    required: "Por favor ingrese una descripción",
+                },
+                categoria: {
+                    required: "Seleccione una categoría"
+                },
+                
+                latitud: {
+                    required: "La latitud es requerida",
+                    number: "La latitud debe ser un número válido"
+                },
+                longitud: {
+                    required: "La longitud es requerida",
+                    number: "La longitud debe ser un número válido"
+                }
+            },
+            errorElement: 'div',
+            errorPlacement: function(error, element) {
+                error.addClass('text-danger small');
+                if (element.prop('type') === 'file') {
+                    error.insertAfter(element.next('label'));
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
 </script>
 @endsection

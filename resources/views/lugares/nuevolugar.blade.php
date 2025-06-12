@@ -35,7 +35,9 @@
     <button  class="btn btn-success" type="submit">Guardar</button> &nbsp;&nbsp;&nbsp;&nbsp; 
     <a class="btn btn-outline-danger" href="{{ route('lugares.lugares') }}">Cancelar</a>
 </form>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0qMP6QpknxzQtVxvF-JT3DVvZ00O0_7k
+    &libraries=places&callback=initMap">
+    </script>
 
 
 <script type="text/javascript">
