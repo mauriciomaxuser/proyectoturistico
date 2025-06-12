@@ -10,7 +10,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lugares/lugares', [LugarturisticoController::class, 'lugares']);
+Route::get('/lugares/lugares', [LugarturisticoController::class, 'lugares'])->name('lugares.lugares');
+Route::get('/mapas/mapa', [LugarturisticoController::class, 'mapas']);
 
 Route::resource('categorias',CategoriaController::class);
 Route::resource('lugares',LugarturisticoController::class);

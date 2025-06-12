@@ -31,6 +31,10 @@
             
             <a class="nav-link" href="/lugares/lugares">Lugares</a>
         </li>
+        <li class="nav-item">
+            
+            <a class="nav-link" href="/mapas/mapa">Ver Mapa</a>
+        </li>
 
         
         
