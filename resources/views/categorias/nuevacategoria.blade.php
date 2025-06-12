@@ -21,19 +21,11 @@
                 rules: {
                     nombre: {
                         required: true
-                    },
-                    descripcion: {
-                        required: true
-                    }
+                    }                
                 },
                 messages: {
                     nombre: {
                         required: "Por favor ingrese un nombre de categoría"
-                    }
-                },
-                messages: {
-                    descripcion: {
-                        required: "Por favor ingrese una descripción"
                     }
                 }
             });
