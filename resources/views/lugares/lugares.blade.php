@@ -26,7 +26,14 @@
                     <td>{{ $lugarTemporal->nombre }}</td>
                     <td>{{ $lugarTemporal->descripcion }}</td>
                     <td>{{ $lugarTemporal->categoria }}</td>
-                    <td>{{ $lugarTemporal->imagen }}</td>
+                    <td>
+                        @if($lugarTemporal->imagen)
+                            <img src="{{ asset('storage/' . $lugarTemporal->imagen) }}" alt="Imagen" width="100">
+                        @else
+                            Sin imagen
+                        @endif
+                    </td>
+
                     <td>{{ $lugarTemporal->latitud }}</td>
                     <td>{{ $lugarTemporal->longitud }}</td>
 

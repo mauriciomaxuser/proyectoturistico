@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('contenido')
-<form action="{{ route('lugares.store') }}"
-        method="post">
+<form action="{{ route('lugares.store') }}" method="post" enctype="multipart/form-data">
+
 
     @csrf
     <h1>Registrar Nuevo Lugar</h1>
@@ -28,8 +28,8 @@
     <label for=""><b>Longitud:</b></label><br>
     <input class="form-control"type="text" name="longitud" id="longitud" readonly> <br> <br>
     <br>
-    <div class="" id="mapa_cliente" style="border:1px solid black; height:250px;
-        width:50%"> </div>
+    <div class="form-control" id="mapa_cliente" style="border:1px solid black; height:400px;
+        width:100%"> </div>
     <br>
     
     <button  class="btn btn-success" type="submit">Guardar</button> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -42,7 +42,7 @@
 
       function initMap(){
         //alert("mapa ok");
-        var latitud_longitud= new google.maps.LatLng(-0.9374805,-78.6161327);
+        var latitud_longitud= new google.maps.LatLng(-0.180653, -78.467838);
         var mapa=new google.maps.Map(
           document.getElementById('mapa_cliente'),
           {
