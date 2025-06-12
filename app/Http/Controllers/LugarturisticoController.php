@@ -48,4 +48,16 @@ class LugarturisticoController extends Controller
         return redirect()->route('lugares.lugares');
         //
     }
+
+
+    //funcion para eliminar
+    public function destroy(string $id)
+    {
+        
+        $lugar = Lugarturistico::findOrFail($id);
+        $lugar->delete(); 
+
+        return redirect()->route('lugares.lugares')->with('success', 'Lugar eliminado correctamente.');
+        //
+    }
 }
