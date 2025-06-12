@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item">
             
-            <a class="nav-link" href="/clientes/mapa">Ver Mapa Global</a>
+            <a class="nav-link" href="/lugares/lugares">Lugares</a>
         </li>
 
         
