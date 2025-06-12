@@ -25,12 +25,18 @@
                             <i class="fa fa-pen"></i>
                         </a>
 
-                        <form action="{{ route('categorias.destroy', $categoriaTemporal->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('¿Estás seguro de eliminar este cliente?');">
+                        <!-- Botón eliminar con SweetAlert -->
+                        <button onclick="eliminarCategoria({{ $categoriaTemporal->id }})"
+                                class="btn btn-danger btn-sm" title="Eliminar">
+                            <i class="fa fa-trash"></i>
+                        </button>
+
+                        <!-- Formulario oculto -->
+                        <form id="formEliminar{{ $categoriaTemporal->id }}"
+                              action="{{ route('categorias.destroy', $categoriaTemporal->id) }}"
+                              method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" title="Eliminar" type="submit">
-                                <i class="fa fa-trash"></i>
-                            </button>
                         </form>
                     </td>
 
@@ -41,3 +47,26 @@
         </tbody>
     </table>
 @endsection
+@section('scripts')
+    <!-- Incluye SweetAlert2 desde CDN -->
+
+    <script>
+        function eliminarCategoria(id) {
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¡Esta acción no se puede deshacer!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('formEliminar' + id).submit();
+                }
+            });
+        }
+    </script>
+    @endsection
+

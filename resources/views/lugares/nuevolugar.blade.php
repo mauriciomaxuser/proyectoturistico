@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('contenido')
-<form action="{{ route('lugares.store') }}" method="post" enctype="multipart/form-data">
+<form id="form_lugar" action="{{ route('lugares.store') }}" method="post" enctype="multipart/form-data">
 
 
     @csrf
@@ -39,6 +39,7 @@
 
 
 <script type="text/javascript">
+  
 
       function initMap(){
         //alert("mapa ok");
@@ -71,5 +72,25 @@
         );
       }
 
+    </script>
+@endsection
+
+@section('scripts')
+
+    <script>
+        $(document).ready(function () {
+            $('#form_categoria').validate({
+                rules: {
+                    nombre: {
+                        required: true
+                    }
+                },
+                messages: {
+                    nombre: {
+                        required: "Por favor ingrese el nombre del lugar"
+                    }
+                }
+            });
+        });
     </script>
 @endsection

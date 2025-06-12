@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('contenido')
-<form action="{{ route('categorias.store') }}"
+<form id="form_categoria" action="{{ route('categorias.store') }}"
         method="post">
 
     @csrf
@@ -12,4 +12,31 @@
     <button  class="btn btn-success" type="submit">Guardar</button> &nbsp;&nbsp;&nbsp;&nbsp; 
     <a class="btn btn-outline-danger" href="{{ route('categorias.index') }}">Cancelar</a>
 </form>
+@endsection
+@section('scripts')
+  
+    <script>
+        $(document).ready(function () {
+            $('#form_categoria').validate({
+                rules: {
+                    nombre: {
+                        required: true
+                    },
+                    descripcion: {
+                        required: true
+                    }
+                },
+                messages: {
+                    nombre: {
+                        required: "Por favor ingrese un nombre de categoría"
+                    }
+                },
+                messages: {
+                    descripcion: {
+                        required: "Por favor ingrese una descripción"
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

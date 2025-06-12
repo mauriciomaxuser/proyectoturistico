@@ -45,12 +45,17 @@
                             <i class="fa fa-pen"></i>
                         </a>
 
-                        <form action="{{ route('lugares.destroy', $lugarTemporal->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('¿Estás seguro de eliminar este cliente?');">
+                        <!-- Botón eliminar con SweetAlert -->
+                        <button onclick="eliminarLugar({{ $lugarTemporal->id }})" class="btn btn-danger btn-sm" title="Eliminar">
+                            <i class="fa fa-trash"></i>
+                        </button>
+
+                        <!-- Formulario oculto -->
+                        <form id="formEliminarLugar{{ $lugarTemporal->id }}"
+                              action="{{ route('lugares.destroy', $lugarTemporal->id) }}"
+                              method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" title="Eliminar" type="submit">
-                                <i class="fa fa-trash"></i>
-                            </button>
                         </form>
                     </td>
 
@@ -60,4 +65,24 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+@section('scripts')
+    <script>
+        function eliminarLugar(id) {
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¡Esta acción no se puede deshacer!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('formEliminarLugar' + id).submit();
+                }
+            });
+        }
+    </script>
 @endsection
