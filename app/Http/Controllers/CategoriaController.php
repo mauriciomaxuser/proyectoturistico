@@ -22,5 +22,16 @@ class CategoriaController extends Controller
 
         //
     }
+    //guardar nuevo recurso en la bdd
+    public function store(Request $request)
+    {
+        $datos=[
+            'nombre'=>$request->nombre,
+        ];
+        Categoria::create($datos);
+        return redirect()->route('categorias.index');
+        //
+    }
+
     
 }
