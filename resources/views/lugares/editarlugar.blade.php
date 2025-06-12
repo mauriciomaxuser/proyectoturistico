@@ -52,9 +52,8 @@
 
 <script type="text/javascript">
     function initMap(){
-        //alert("mapa ok");
-        var latitud = parseFloat("{{ $lugar->latitud }}")
-        var longitud = parseFloat("{{ $lugar->longitud }}") 
+        var latitud = parseFloat("{{ $lugar->latitud }}");
+        var longitud = parseFloat("{{ $lugar->longitud }}"); 
 
         var latLng = new google.maps.LatLng(latitud, longitud);
 
@@ -62,27 +61,33 @@
             center: latLng,
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-          }
-        );
-        var marcador=new google.maps.Marker({
-          position:latLng,
-          map:mapa,
-          title:"Seleccione la direccion",
-          draggable:true //aqui se puede arrasttrar
         });
-        google.maps.event.addListener(
-          marcador,
-          'dragend', //cuandose suelta se ejecuta captura latitud y longitud de marcador
-          function(event){
-            var latitud=this.getPosition().lat();
-            var longitud=this.getPosition().lng();
-            /*alert("LATITUD: "+latitud);
-            alert("LONGITUD: "+longitud);*/
-            document.getElementById("latitud").value=latitud;
-            document.getElementById("longitud").value=longitud;
-          }
-        );
-      }
+
+        var marcador = new google.maps.Marker({
+            position: latLng,
+            map: mapa,
+            title: "Seleccione la dirección",
+            draggable: true
+        });
+
+        // Al arrastrar el marcador
+        google.maps.event.addListener(marcador, 'dragend', function(event){
+            var latitud = this.getPosition().lat();
+            var longitud = this.getPosition().lng();
+            document.getElementById("latitud").value = latitud;
+            document.getElementById("longitud").value = longitud;
+        });
+
+        // Al hacer clic en el mapa
+        google.maps.event.addListener(mapa, 'click', function(event){
+            var latitud = event.latLng.lat();
+            var longitud = event.latLng.lng();
+            marcador.setPosition(event.latLng); // Mover marcador
+            document.getElementById("latitud").value = latitud;
+            document.getElementById("longitud").value = longitud;
+        });
+    }
+
 </script>
 @endsection
 @section('scripts')

@@ -43,36 +43,43 @@
 <script type="text/javascript">
   
 
-      function initMap(){
-        //alert("mapa ok");
-        var latitud_longitud= new google.maps.LatLng(-0.180653, -78.467838);
-        var mapa=new google.maps.Map(
-          document.getElementById('mapa_cliente'),
-          {
-            center:latitud_longitud,
-            zoom:15,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-          }
-        );
-        var marcador=new google.maps.Marker({
-          position:latitud_longitud,
-          map:mapa,
-          title:"Seleccione la direccion",
-          draggable:true //aqui se puede arrasttrar
+      function initMap() {
+        var latitud_longitud = new google.maps.LatLng(-0.9374805, -78.6161327);
+        var mapa = new google.maps.Map(document.getElementById('mapa_cliente'), {
+            center: latitud_longitud,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        google.maps.event.addListener(
-          marcador,
-          'dragend', //cuandose suelta se ejecuta captura latitud y longitud de marcador
-          function(event){
-            var latitud=this.getPosition().lat();
-            var longitud=this.getPosition().lng();
-            /*alert("LATITUD: "+latitud);
-            alert("LONGITUD: "+longitud);*/
-            document.getElementById("latitud").value=latitud;
-            document.getElementById("longitud").value=longitud;
-          }
-        );
-      }
+
+        var marcador = new google.maps.Marker({
+            position: latitud_longitud,
+            map: mapa,
+            title: "Ubicación seleccionada",
+            draggable: true
+        });
+
+        // Setear coordenadas iniciales
+        document.getElementById("latitud").value = latitud_longitud.lat();
+        document.getElementById("longitud").value = latitud_longitud.lng();
+
+        // Al arrastrar el marcador
+        marcador.addListener('dragend', function(event) {
+            var latitud = event.latLng.lat();
+            var longitud = event.latLng.lng();
+            document.getElementById("latitud").value = latitud;
+            document.getElementById("longitud").value = longitud;
+        });
+
+        // Al hacer clic en el mapa
+        mapa.addListener('click', function(event) {
+            var latitud = event.latLng.lat();
+            var longitud = event.latLng.lng();
+            marcador.setPosition(event.latLng); // Mover marcador
+            document.getElementById("latitud").value = latitud;
+            document.getElementById("longitud").value = longitud;
+        });
+    }
+
 
     </script>
 @endsection

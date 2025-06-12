@@ -11,6 +11,7 @@ height:500px; width:100%" >
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0qMP6QpknxzQtVxvF-JT3DVvZ00O0_7k
     &libraries=places&callback=initMap">
     </script>
+
 <script type="text/javascript">
 
       function initMap(){
