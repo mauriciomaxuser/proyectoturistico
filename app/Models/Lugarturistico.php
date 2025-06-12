@@ -15,8 +15,6 @@ class Lugarturistico extends Model
         'imagen',
         'latitud',
         'longitud'
-
-
     ];
     //
 }

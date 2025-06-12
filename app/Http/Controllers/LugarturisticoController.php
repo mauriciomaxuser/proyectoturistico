@@ -6,5 +6,6 @@ use Illuminate\Http\Request;
 
 class LugarturisticoController extends Controller
 {
+    
     //
 }
