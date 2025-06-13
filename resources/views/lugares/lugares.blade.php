@@ -87,7 +87,7 @@
         });
 
         document.getElementById('filtroCategoria').addEventListener('change', function () {
-            table.column(2).search(this.value).draw(); // La columna 2 es "Categoría"
+            table.column(2).search(this.value).draw(); 
         });
     </script>
 @endsection
