@@ -81,7 +81,7 @@
 					<li class="nav-item active"><a href="/layout/index" class="nav-link">Home</a></li>
 					<li class="nav-item active"><a href="/lugares/lugares" class="nav-link">Sitios Turisticos</a></li>
 					<li class="nav-item active"><a href="/categorias" class="nav-link">Categorías</a></li>
-					
+					<li class="nav-item active"><a href="/mapas/mapa" class="nav-link">Mapa Sitios Turisticos</a></li>
 
 				</ul>
 			</div>
