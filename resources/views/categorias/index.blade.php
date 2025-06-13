@@ -68,14 +68,12 @@
             });
         }
 
-        // Inicializa DataTable
         let table = new DataTable('#tablaCategorias', {
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
             }
         });
 
-        // Filtro personalizado
         document.getElementById('filtroCategoria').addEventListener('change', function () {
             let valorFiltro = this.value;
             table.search(valorFiltro).draw();

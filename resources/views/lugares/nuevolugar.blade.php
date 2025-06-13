@@ -57,7 +57,6 @@
             draggable: true
         });
 
-        // Setear coordenadas iniciales
         document.getElementById("latitud").value = latitud_longitud.lat();
         document.getElementById("longitud").value = latitud_longitud.lng();
 
