@@ -15,8 +15,12 @@ class LugarturisticoController extends Controller
     {
         $lugares = Lugarturistico::all();
 
-        return view('lugares.lugares', compact('lugares'));
+        // Obtener las categorías únicas desde los lugares
+        $categoriasUnicas = $lugares->pluck('categoria')->unique()->sort()->values();
+
+        return view('lugares.lugares', compact('lugares', 'categoriasUnicas'));
     }
+
 
 
     public function mapas()
@@ -26,7 +30,7 @@ class LugarturisticoController extends Controller
     }
     public function layout()
     {
-        return view('layout.index'); // O la vista que quieras mostrar
+        return view('layout.index'); 
     }
     //
     public function create()

@@ -2,12 +2,19 @@
 
 @section('contenido')
     <h1>Listado de Lugares Turisticos</h1>
-    <div class="d-flex gap-2 mb-3">
+    <div class="d-flex gap-2 mb-3 align-items-center">
         <a href="{{ route('lugares.create') }}" class="btn btn-success">Agregar Nuevo Lugar</a>
+
+        <!-- Filtro de categorías -->
+        <select id="filtroCategoria" class="form-select w-auto">
+            <option value="">Todas las categorías</option>
+            @foreach($categoriasUnicas as $categoria)
+                <option value="{{ $categoria }}">{{ $categoria }}</option>
+            @endforeach
+        </select>
     </div>
 
-    <table id="tablaLugares" class="table table-bordered 
-     table-striped table-hover">
+    <table id="tablaLugares" class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -17,7 +24,6 @@
                 <th>Latitud</th>
                 <th>Longitud</th>
                 <th>OPCIONES</th>
-
             </tr>
         </thead>
         <tbody>
@@ -33,22 +39,15 @@
                             Sin imagen
                         @endif
                     </td>
-
                     <td>{{ $lugarTemporal->latitud }}</td>
                     <td>{{ $lugarTemporal->longitud }}</td>
-
-
-
-                    
-                   <td>
+                    <td>
                         <a href="{{ route('lugares.edit', $lugarTemporal->id) }}" class="btn btn-warning btn-sm" title="Editar">
                             <i class="fa fa-pen"></i>
                         </a>
-
                         <button onclick="eliminarLugar({{ $lugarTemporal->id }})" class="btn btn-danger btn-sm" title="Eliminar">
                             <i class="fa fa-trash"></i>
                         </button>
-
                         <form id="formEliminarLugar{{ $lugarTemporal->id }}"
                               action="{{ route('lugares.destroy', $lugarTemporal->id) }}"
                               method="POST" style="display: none;">
@@ -56,14 +55,12 @@
                             @method('DELETE')
                         </form>
                     </td>
-
-                    
-                    
                 </tr>
             @endforeach
         </tbody>
     </table>
 @endsection
+
 @section('scripts')
     <script>
         function eliminarLugar(id) {
@@ -86,8 +83,11 @@
         let table = new DataTable('#tablaLugares', {
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
-            },
-            
+            }
+        });
+
+        document.getElementById('filtroCategoria').addEventListener('change', function () {
+            table.column(2).search(this.value).draw(); // La columna 2 es "Categoría"
         });
     </script>
 @endsection
