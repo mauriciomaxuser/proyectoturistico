@@ -6,7 +6,8 @@
         <a href="{{ route('lugares.create') }}" class="btn btn-success">Agregar Nuevo Lugar</a>
     </div>
 
-    <table id="tablaLugares" class="table table-bordered table-striped table-hover">
+    <table id="tablaLugares" class="table table-bordered 
+     table-striped table-hover">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -16,6 +17,7 @@
                 <th>Latitud</th>
                 <th>Longitud</th>
                 <th>OPCIONES</th>
+
             </tr>
         </thead>
         <tbody>
@@ -31,9 +33,14 @@
                             Sin imagen
                         @endif
                     </td>
+
                     <td>{{ $lugarTemporal->latitud }}</td>
                     <td>{{ $lugarTemporal->longitud }}</td>
-                    <td>
+
+
+
+                    
+                   <td>
                         <a href="{{ route('lugares.edit', $lugarTemporal->id) }}" class="btn btn-warning btn-sm" title="Editar">
                             <i class="fa fa-pen"></i>
                         </a>
@@ -49,39 +56,15 @@
                             @method('DELETE')
                         </form>
                     </td>
+
+                    
+                    
                 </tr>
             @endforeach
         </tbody>
     </table>
 @endsection
-
-@section('styles')
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" />
-@endsection
-
 @section('scripts')
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
-    <!-- DataTables Buttons -->
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.flash.min.js"></script>
-
-    <!-- Dependencias para exportar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script>
         function eliminarLugar(id) {
             Swal.fire({
@@ -100,14 +83,15 @@
             });
         }
 
-        $(document).ready(function() {
-            $('#tablaLugares').DataTable({
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
-                },
-                dom: 'Bfrtip',
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-            });
+        let table = new DataTable('#tablaLugares', {
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+            },
+            layout: {
+                topStart: {
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                }
+            }
         });
     </script>
 @endsection
