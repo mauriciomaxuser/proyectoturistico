@@ -13,7 +13,7 @@ height:500px; width:100%" >
 
 <script type="text/javascript">
     function initMap() {
-        var latitud_longitud = new google.maps.LatLng(-0.9374805, -78.6161327);
+        var latitud_longitud = new google.maps.LatLng(-1.396900, -78.424400);
         var mapa = new google.maps.Map(document.getElementById('mapa-lugares'), {
             center: latitud_longitud,
             zoom: 15,

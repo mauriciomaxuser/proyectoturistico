@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 <div class="hero-wrap js-fullheight" 
-     style="background-image: url({{ asset('images/bg_5.jpg') }}); 
+     style="background-image: url({{ asset('images/turismo.jpg') }}); 
             height: 100vh; 
             background-size: cover; 
             background-position: center center; 

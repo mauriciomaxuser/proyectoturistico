@@ -43,7 +43,7 @@
   
 
       function initMap() {
-        var latitud_longitud = new google.maps.LatLng(-0.9374805, -78.6161327);
+        var latitud_longitud = new google.maps.LatLng(-1.396900, -78.424400);
         var mapa = new google.maps.Map(document.getElementById('mapa_cliente'), {
             center: latitud_longitud,
             zoom: 15,
@@ -81,6 +81,12 @@
 
 
     </script>
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery Validation -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script>
+
 @endsection
 
 @section('scripts')

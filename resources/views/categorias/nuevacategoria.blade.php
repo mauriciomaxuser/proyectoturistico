@@ -12,6 +12,7 @@
     <button  class="btn btn-success" type="submit">Guardar</button> &nbsp;&nbsp;&nbsp;&nbsp; 
     <a class="btn btn-outline-danger" href="{{ route('categorias.index') }}">Cancelar</a>
 </form>
+
 @endsection
 @section('scripts')
   
