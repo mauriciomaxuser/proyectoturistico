@@ -24,6 +24,10 @@ class LugarturisticoController extends Controller
         $mapas = Lugarturistico::all(); 
         return view('mapas.mapas', compact('mapas'));
     }
+    public function layout()
+    {
+        return view('layout.index'); // O la vista que quieras mostrar
+    }
     //
     public function create()
     {

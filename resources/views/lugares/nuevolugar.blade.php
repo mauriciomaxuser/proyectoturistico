@@ -28,16 +28,15 @@
     <label for=""><b>Longitud:</b></label><br>
     <input class="form-control"type="text" name="longitud" id="longitud" readonly> <br> <br>
     <br>
-    <div class="form-control" id="mapa_cliente" style="border:1px solid black; height:400px;
+    <div class="" id="mapa_cliente" style="border:1px solid black; height:400px;
         width:100%"> </div>
     <br>
     
     <button  class="btn btn-success" type="submit">Guardar</button> &nbsp;&nbsp;&nbsp;&nbsp; 
     <a class="btn btn-outline-danger" href="{{ route('lugares.lugares') }}">Cancelar</a>
 </form>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0qMP6QpknxzQtVxvF-JT3DVvZ00O0_7k
-    &libraries=places&callback=initMap">
-    </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0qMP6QpknxzQtVxvF-JT3DVvZ00O0_7k&libraries=places&callback=initMap"></script>
+
 
 
 <script type="text/javascript">

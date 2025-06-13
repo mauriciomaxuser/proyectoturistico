@@ -11,6 +11,8 @@ Route::get('/', function () {
 });
 
 Route::get('/lugares/lugares', [LugarturisticoController::class, 'lugares'])->name('lugares.lugares');
+Route::get('/layout/index', [LugarturisticoController::class, 'layout'])->name('layout.index');
+
 Route::get('/mapas/mapa', [LugarturisticoController::class, 'mapas']);
 
 Route::resource('categorias',CategoriaController::class);

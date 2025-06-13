@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('contenido')
+
     <h1>Listado de categoría</h1>
     <div class="d-flex gap-2 mb-3">
         <a href="{{ route('categorias.create') }}" class="btn btn-success">Agregar Nueva Categoría</a>
