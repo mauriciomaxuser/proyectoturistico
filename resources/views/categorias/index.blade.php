@@ -7,8 +7,8 @@
         <a href="{{ route('categorias.create') }}" class="btn btn-success">Agregar Nueva Categoría</a>
     </div>
 
-    <table  class="table table-bordered 
-     table-striped table-hover">
+    <table id="tablaCategorias" class="table table-bordered table-striped table-hover">
+
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -49,8 +49,6 @@
     </table>
 @endsection
 @section('scripts')
-    <!-- Incluye SweetAlert2 desde CDN -->
-
     <script>
         function eliminarCategoria(id) {
             Swal.fire({
@@ -68,6 +66,12 @@
                 }
             });
         }
+
+        let table = new DataTable('#tablaCategorias', {
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"
+            }
+        });
     </script>
-    @endsection
+@endsection
 

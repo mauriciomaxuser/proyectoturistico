@@ -10,8 +10,8 @@
         <div class="row no-gutters slider-text js-fullheight align-items-start pt-5" data-scrollax-parent="false">
             <div class="col-md-7 ftco-animate"><br><br><br><br><br>
                 <span class="subheading">Bienvenidos !</span>
-                <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
-                <p class="caps">Travel to any corner of the world, without going around in circles</p>
+                <h1 class="mb-4">Haz que cada viaje sea una experiencia inolvidable.</h1>
+                <p class="caps">Descubre el equilibrio perfecto entre naturaleza y cultura.</p>
             </div>
         </div>
     </div>
