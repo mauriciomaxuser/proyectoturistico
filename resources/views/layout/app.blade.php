@@ -79,6 +79,7 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a href="/layout/index" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="/lugares/lugares" class="nav-link">Sitios Turisticos</a></li>
 					
 
 				</ul>
